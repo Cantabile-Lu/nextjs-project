@@ -1,0 +1,17 @@
+@import "swiper/css";
+@import "swiper/css/autoplay";
+@import "swiper/css/pagination";
+@import "swiper/css/virtual";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,body {
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+

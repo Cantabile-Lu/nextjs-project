@@ -1,0 +1,62 @@
+{
+  "form": {
+    "nameLabel": "用户名",
+    "nameRules": "请输入有效的用户名",
+    "passLabel": "密码",
+    "passRules": "请输入有效的密码",
+    "remember": "记住我",
+
+    "currentPassword": "当前密码",
+    "newPassword": "新密码",
+    "confirmPassword": "确认新密码",
+    "confirmRules": "输入不一致"
+  },
+  "buttons": {
+    "submit": "提交",
+    "login": "登录",
+    "change": "修改",
+    "cancel": "取消",
+    "confirm": "确认",
+    "scroll": "返回顶部"
+  },
+  "tips": {
+    "logout": "清除数据并退出？"
+  },
+  "navbar": {
+    "log": "积分记录",
+    "history": "游戏记录",
+    "password": "修改密码",
+    "language": "语言",
+    "service": "客服",
+    "logout": "退出登录",
+    "back": "返回"
+  },
+  "modals": {
+    "language": {
+      "title": "语言"
+    }
+  },
+  "home": {
+    "hotUnit": "RTP",
+    "hotGameTitle": "热门游戏 RTP %",
+    "gameSearch": "搜索",
+    "winner": "最高赢家",
+    "winnerBet": "{num} 倍投注"
+  },
+  "score": {
+    "time": "日期 & 时间",
+    "score": "设定积分",
+    "before": "之前",
+    "after": "之后"
+  },
+  "history": {
+    "time": "日期 & 时间",
+    "bet": "投注",
+    "win": "输/赢",
+    "replay": "回放",
+    "selectPlaceholder": "请选择"
+  },
+  "code": {
+    "1009": "账号或密码错误"
+  }
+}

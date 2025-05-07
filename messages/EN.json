@@ -1,0 +1,62 @@
+{
+  "form": {
+    "nameLabel": "Username",
+    "nameRules": "Please enter a valid username",
+    "passLabel": "Password",
+    "passRules": "Please enter a valid Password",
+    "remember": "Remember me",
+
+    "currentPassword": "Current Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm New Password",
+    "confirmRules": "Inconsistent Input"
+  },
+  "buttons": {
+    "submit": "Submit",
+    "login": "Login",
+    "change": "Change",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "scroll": "Back to Top"
+  },
+  "tips": {
+    "logout": "Clear data and exit?"
+  },
+  "navbar":{
+    "log": "Score Log",
+    "history": "Game History",
+    "password": "Change Password",
+    "language": "Language",
+    "service": "Customer Service",
+    "logout": "Logout",
+    "back": "Back"
+  },
+  "modals": {
+    "language": {
+      "title": "language"
+    }
+  },
+  "home": {
+    "hotUnit": "RTP",
+    "hotGameTitle": "Hot Games RTP %",
+    "gameSearch": "Search",
+    "winner": "Top Winner",
+    "winnerBet": "{num} × bet"
+  },
+  "score": {
+    "time": "Date & Time",
+    "score": "Set Score",
+    "before": "Before",
+    "after": "After"
+  },
+  "history":{
+    "time": "Date & Time",
+    "bet": "Bet",
+    "win": "W/L",
+    "replay": "Replay",
+    "selectPlaceholder": "Select"
+  },
+  "code": {
+    "1009": "Account/Password error"
+  }
+}
