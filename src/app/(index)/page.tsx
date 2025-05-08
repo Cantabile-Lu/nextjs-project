@@ -1,19 +1,16 @@
-import Car from "@/icon/car.svg";
+import { server } from "@/utils/server";
+import ShoppingCarWidget from "./ShoppingCarWidget";
 
-const ShoppingCarWidget = () => {
-    return (
-        <div className={"fixed bottom-20 right-20 "}>
-            <div
-                className={
-                    "w-14 h-14  flex justify-center bg-[#FEFEFE] items-center rounded-full shadow-md"
-                }
-            >
-                <Car />
-            </div>
-        </div>
-    );
+const getData = () => {
+    return fetch("http://localhost:3000/api/video")
+        .then((res) => res.json())
+        .then((res) => {
+            console.log(`🚀🚀🚀🚀🚀-> in page.tsx on 6`, res);
+        });
 };
+
 const Page = async () => {
+    const result = await getData();
     return (
         <div>
             <ShoppingCarWidget />
