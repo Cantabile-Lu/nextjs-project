@@ -54,17 +54,18 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
     const { data } = use(promise);
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
     const [total, setTotal] = useState(0);
-    const [selectedData, setSelectedData] = useState([]);
-    const [checkAll, setCheckAll] = useState(false);
+
+    const [selectedData, setSelectedData] = useState<CardType[]>(data);
+
     const items = [
         {
             title: (
                 <div className="flex items-center space-x-2">
                     <span>视频</span>
-                    <span className={"ml-2"}>{data.length}</span>
+                    <span className={"ml-2"}>{selectedData.length}</span>
                 </div>
             ),
-            render: <Card data={data} />,
+            render: <Card data={selectedData} onChange={setSelectedData} />,
         },
     ];
     return (
@@ -103,12 +104,34 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                     >
                                         <Checkbox
                                             size={"sm"}
-                                            value={checkAll}
-                                            onChange={setCheckAll}
+                                            onChange={(value) => {
+                                                if (value.target.checked) {
+                                                    const newData = data.map(
+                                                        (item) => {
+                                                            item.checked = true;
+                                                            return item;
+                                                        }
+                                                    );
+                                                    setSelectedData(newData);
+                                                } else {
+                                                    const newData = data.map(
+                                                        (item) => {
+                                                            item.checked =
+                                                                false;
+                                                            return item;
+                                                        }
+                                                    );
+                                                    setSelectedData(newData);
+                                                }
+                                            }}
                                         >
                                             全选
                                         </Checkbox>
-                                        <div className={"flex items-center"}>
+                                        <div
+                                            className={
+                                                "flex items-center border"
+                                            }
+                                        >
                                             <p>
                                                 <span>已选</span>
                                                 <span className={"mx-2"}>

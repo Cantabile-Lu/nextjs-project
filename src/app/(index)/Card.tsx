@@ -10,9 +10,11 @@ export interface CardType {
     title: string; // 素材标题​
     licType: "NP" | "LP" | "LPPLUS"; // 加入购物车时选的授权类型：“个人授权” ｜ “企业授权” ｜ “企业PLUS” ​
     vid: number; // 素材唯一id
+    checked?: boolean; // 是否选中​
 }
 interface CardProps {
     data: CardType[];
+    onChange: (data: CardType[]) => void;
 }
 const warrantTarget = {
     NP: "个人授权",
@@ -20,19 +22,26 @@ const warrantTarget = {
     LPPLUS: "企业PLUS",
 };
 export const Card: FC<CardProps> = (props) => {
-    const { data: dataSource } = props;
-    const [data, setData] = useState(dataSource);
+    const { data, onChange } = props;
+    const defaultKeys = data
+        .filter((item) => item.checked)
+        .map((item) => `${item.vid}`);
+    const newData = Object.fromEntries(data.map((item) => [item.vid, item]));
+
     const removeHandler = (cardItem: CardType, index: number) => {
         const newData = data.filter((item) => item.vid !== cardItem.vid);
-        setData(newData);
     };
-    const newData = Object.fromEntries(data.map((item) => [item.vid, item]));
+
     const changeHandler = (values: string[]) => {
-        const selectData = values.map((key) => newData[key]);
-        console.log(`🚀🚀🚀🚀🚀-> in Card.tsx on 30`, selectData);
+        console.log(`🚀🚀🚀🚀🚀-> in Card.tsx on 36`, values);
+        values.forEach((key) => {
+            newData[key].checked = !newData[key].checked;
+        });
+        const checkedData = Object.values(newData);
+        onChange(checkedData);
     };
     return (
-        <CheckboxGroup onChange={changeHandler}>
+        <CheckboxGroup onChange={changeHandler} value={defaultKeys}>
             {data.map((cardItem, index) => (
                 <div
                     className={cn(
