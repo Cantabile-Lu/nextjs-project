@@ -1,11 +1,5 @@
 import Car from "@/icon/car.svg";
-import { server } from "@/utils/server";
 
-const getData = () => {
-    return server.request({
-        url: "/vjh/buyer/cart/videos",
-    });
-};
 const ShoppingCarWidget = () => {
     return (
         <div className={"fixed bottom-20 right-20 "}>
@@ -20,8 +14,6 @@ const ShoppingCarWidget = () => {
     );
 };
 const Page = async () => {
-    const result = await getData();
-    console.log(`🚀🚀🚀🚀🚀-> in page.tsx on 25`, result);
     return (
         <div>
             <ShoppingCarWidget />
