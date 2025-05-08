@@ -10,7 +10,6 @@ const getData = () => {
 };
 
 const Page = async () => {
-    const result = await getData();
     return (
         <div>
             <ShoppingCarWidget />
