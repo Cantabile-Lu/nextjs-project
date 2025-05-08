@@ -16,14 +16,12 @@ import { useRouter } from "next/navigation";
 import cookie from "js-cookie";
 import { Local } from "@/utils/storage";
 import { use, useEffect, useMemo, useRef, useState } from "react";
-import { UserType } from "@/types/user";
-import { ConfigContext } from "@/context/config";
 import { server } from "@/utils/client";
 interface Props {
     label: string;
     icon: string;
 }
-
+interface UserType {}
 /**
  * @description 个人信息
  */
@@ -33,51 +31,6 @@ const getScoreApi = async (data: { userid: number; dynamicpass: string }) => {
         method: "POST",
         data,
     });
-};
-export const UserNavbarItem = () => {
-    const locale = useLocale();
-    const [userInfo, setUserInfo] = useState<
-        Pick<UserType, "score" | "account">
-    >({
-        account: "",
-        score: "0",
-    });
-    useEffect(() => {
-        getScoreApi({
-            userid: Local.getKey("user_info")?.uid!,
-            dynamicpass: Local.getKey("user_info")?.dynamicpass!,
-        }).then((res) => {
-            setUserInfo({
-                ...Local.getKey("user_info")!,
-                score: Number(res.data.score ?? 0).toLocaleString(
-                    locale.toLowerCase(),
-                    {
-                        minimumFractionDigits: 2,
-                        maximumFractionDigits: 10,
-                    }
-                ),
-            });
-        });
-    }, []);
-    return (
-        <div className={""}>
-            <div className={"flex items-center max-w-44 truncate"}>
-                <Image src={"/menu/User.png"} alt={""} width={20} height={20} />
-                <p className={"ml-2 "}>{userInfo.account}</p>
-            </div>
-            <div
-                className={"flex items-center max-w-44 truncate text-[#FFFF00]"}
-            >
-                <Image
-                    src={"/menu/Points.png"}
-                    alt={""}
-                    width={20}
-                    height={20}
-                />
-                <p className={"ml-2 "}>{userInfo.score}</p>
-            </div>
-        </div>
-    );
 };
 /**
  * @description 语言
@@ -170,13 +123,8 @@ export const LogoutNavbarItem = (props: Props) => {
  */
 export const TelegramLinkNavbarItem = (props: Props) => {
     const { label, icon } = props;
-    const { customerLink } = use(ConfigContext);
     return (
-        <Link
-            target={"_blank"}
-            href={`https://${customerLink}`}
-            className={"flex items-center"}
-        >
+        <Link target={"_blank"} className={"flex items-center"}>
             <Image src={icon} alt={label} height={40} width={40} />
             <span className={"ml-2 text-foreground"}>{label}</span>
         </Link>
