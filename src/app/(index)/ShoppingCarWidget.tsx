@@ -248,7 +248,8 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                                 selectedData.filter(
                                                     (item) => item.checked
                                                 ),
-                                                `总价为：${total}`
+                                                `总价为：${total}`,
+                                                `业务线：${business.current}`
                                             );
                                         }}
                                         radius={"full"}
