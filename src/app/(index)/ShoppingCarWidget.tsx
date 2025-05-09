@@ -14,7 +14,7 @@ import {
     cn,
 } from "@heroui/react";
 import { Card, CardType } from "./Card";
-import { FC, ReactNode, use, useState, Key } from "react";
+import { FC, ReactNode, use, useState, Key, useRef } from "react";
 import { Badge } from "@heroui/badge";
 interface DataTabsProps {
     items: {
@@ -66,14 +66,14 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
         music: [] as CardType[],
     };
     const { isOpen, onOpen, onOpenChange } = useDisclosure();
+    const business = useRef("video");
 
     const [selectedData, setSelectedData] = useState<CardType[]>(source.video);
 
     // 总价
-    const total = selectedData.reduce(
-        (pre, cur) => (cur.checked ? pre + cur.price : pre),
-        0
-    );
+    const total = selectedData
+        .reduce((pre, cur) => (cur.checked ? pre + cur.price : pre), 0)
+        .toFixed(2);
     // 选中数量
     const checkLen = selectedData.reduce(
         (pre, cur) => (cur.checked ? pre + 1 : pre),
@@ -149,6 +149,7 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                 <DataTabs
                                     items={items}
                                     onChange={(key) => {
+                                        business.current = key;
                                         setSelectedData(
                                             source[
                                                 key as
@@ -221,7 +222,7 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                                         "mx-2 text-[#EE4A4A] text-2xl font-medium"
                                                     }
                                                 >
-                                                    {total.toFixed(2)}
+                                                    {total}
                                                 </span>
                                                 <span
                                                     className={"text-[#EE4A4A]"}
