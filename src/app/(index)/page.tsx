@@ -1,7 +1,7 @@
 import ShoppingCarWidget from "./ShoppingCarWidget";
 
 const getData = () => {
-    return fetch("http://localhost:3000/api/video", {
+    return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/video`, {
         method: "POST",
     }).then((res) => res.json());
 };
