@@ -26,90 +26,112 @@ export const Card: FC<CardProps> = (props) => {
     const defaultKeys = data
         .filter((item) => item.checked)
         .map((item) => `${item.vid}`);
-    const newData = Object.fromEntries(data.map((item) => [item.vid, item]));
 
     const removeHandler = (cardItem: CardType, index: number) => {
         const newData = data.filter((item) => item.vid !== cardItem.vid);
+        onChange(newData);
     };
 
     const changeHandler = (values: string[]) => {
-        console.log(`🚀🚀🚀🚀🚀-> in Card.tsx on 36`, values);
-        values.forEach((key) => {
-            newData[key].checked = !newData[key].checked;
+        const newData = data.filter((item) => {
+            item.checked = values.includes(`${item.vid}`);
+            return item;
         });
-        const checkedData = Object.values(newData);
-        onChange(checkedData);
+        onChange(newData);
     };
+    if (data.length === 0) {
+        return (
+            <div className={"flex items-center justify-center h-[60vh] w-full"}>
+                暂无数据
+            </div>
+        );
+    }
     return (
         <CheckboxGroup onChange={changeHandler} value={defaultKeys}>
-            {data.map((cardItem, index) => (
-                <div
-                    className={cn(
-                        " group w-full  m-0",
-                        "hover:bg-content2",
-                        "cursor-pointer rounded-lg gap-2 p-4"
-                    )}
-                    key={cardItem.vid}
-                >
-                    <div className={"flex items-center"}>
-                        <Checkbox
-                            value={`${cardItem.vid}`}
-                            size={"sm"}
-                        ></Checkbox>
-                        <div className={"w-full flex space-x-4 ml-4"}>
-                            <img
-                                src={cardItem.coverImage}
-                                alt={cardItem.title}
-                                className={"rounded"}
-                            />
-
-                            <div className={"flex-1 "}>
-                                <h1
-                                    className={
-                                        " text-ellipsis my-2 text-[#0D0D0D] text-base font-medium"
-                                    }
-                                >
-                                    {cardItem.title}
-                                </h1>
-                                <div className="flex h-5 items-center space-x-4 text-small text-[#404040] ">
-                                    <div className={"space-x-2 "}>
-                                        <span>ID:</span>
-                                        <span>{cardItem.vid}</span>
-                                    </div>
-                                    <Divider
-                                        orientation="vertical"
-                                        className={"bg-[#CCCCCC]"}
+            {data.map((cardItem, index) => {
+                const isFall = cardItem.auditStatus === "FAIL";
+                return (
+                    <div
+                        className={cn(
+                            " group w-full  m-0",
+                            "hover:bg-content2",
+                            "cursor-pointer rounded-lg gap-2 p-4"
+                        )}
+                        key={cardItem.vid}
+                    >
+                        <div className={"flex items-center"}>
+                            <Checkbox
+                                value={`${cardItem.vid}`}
+                                isDisabled={isFall}
+                                size={"sm"}
+                            ></Checkbox>
+                            <div className={"w-full flex space-x-4 ml-4"}>
+                                <div className={"relative"}>
+                                    <img
+                                        src={cardItem.coverImage}
+                                        alt={cardItem.title}
+                                        className={"rounded"}
                                     />
-                                    <div className={"space-x-2 "}>
-                                        <span>类型:</span>
-                                        <span>{cardItem.softwareType}</span>
+                                    {isFall && (
+                                        <div
+                                            className={
+                                                "absolute top-0 left-0 right-0 bottom-0 bg-[#000]/20 flex items-center" +
+                                                " justify-center text-[white] "
+                                            }
+                                        >
+                                            下架
+                                        </div>
+                                    )}
+                                </div>
+
+                                <div className={"flex-1 "}>
+                                    <h1
+                                        className={
+                                            " text-ellipsis my-2 text-[#0D0D0D] text-base font-medium"
+                                        }
+                                    >
+                                        {cardItem.title}
+                                    </h1>
+                                    <div className="flex h-5 items-center space-x-4 text-small text-[#404040] ">
+                                        <div className={"space-x-2 "}>
+                                            <span>ID:</span>
+                                            <span>{cardItem.vid}</span>
+                                        </div>
+                                        <Divider
+                                            orientation="vertical"
+                                            className={"bg-[#CCCCCC]"}
+                                        />
+                                        <div className={"space-x-2 "}>
+                                            <span>类型:</span>
+                                            <span>{cardItem.softwareType}</span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div className={"flex justify-between mt-3 text-sm"}>
-                        <div
-                            className={
-                                "opacity-0 group-hover:opacity-100  transition-opacity  duration-1000  ml-10"
-                            }
-                            onClick={() => removeHandler(cardItem, index)}
-                        >
-                            移除
-                        </div>
-                        <div>
-                            <span className={"mr-5"}>
-                                {warrantTarget[cardItem.licType]}
-                            </span>
-                            <span className={"font-semibold text-xl"}>
-                                {cardItem.price}
-                            </span>
-                            <span>元</span>
+                        <div className={"flex justify-between mt-3 text-sm"}>
+                            <div
+                                className={
+                                    "opacity-0 group-hover:opacity-100  transition-opacity  duration-1000  ml-10"
+                                }
+                                onClick={() => removeHandler(cardItem, index)}
+                            >
+                                移除
+                            </div>
+                            <div>
+                                <span className={"mr-5"}>
+                                    {warrantTarget[cardItem.licType]}
+                                </span>
+                                <span className={"font-semibold text-xl"}>
+                                    {cardItem.price}
+                                </span>
+                                <span>元</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                );
+            })}
         </CheckboxGroup>
     );
 };
