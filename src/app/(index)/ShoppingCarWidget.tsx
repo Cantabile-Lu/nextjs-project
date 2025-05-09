@@ -238,9 +238,16 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                         onPress={() => {
                                             console.log(
                                                 `🚀🚀🚀🚀🚀-> 结算商品为：`,
+                                                selectedData
+                                                    .filter(
+                                                        (item) => item.checked
+                                                    )
+                                                    .map((item) => item.vid),
+
                                                 selectedData.filter(
                                                     (item) => item.checked
-                                                )
+                                                ),
+                                                total
                                             );
                                         }}
                                         radius={"full"}
