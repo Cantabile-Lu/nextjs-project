@@ -14,7 +14,7 @@ import {
     cn,
 } from "@heroui/react";
 import { Card, CardType } from "./Card";
-import { FC, ReactNode, use, useState } from "react";
+import { FC, ReactNode, use, useState, Key } from "react";
 import { Badge } from "@heroui/badge";
 interface DataTabsProps {
     items: {
@@ -26,8 +26,8 @@ interface DataTabsProps {
 }
 const DataTabs: FC<DataTabsProps> = (props) => {
     const { items, onChange } = props;
-    const changeHandler = (key: string) => {
-        onChange(key);
+    const changeHandler = (key: Key) => {
+        onChange(key as string);
     };
     return (
         <Tabs
