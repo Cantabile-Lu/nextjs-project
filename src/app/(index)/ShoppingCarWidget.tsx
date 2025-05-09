@@ -247,7 +247,7 @@ const ShoppingCarWidget: FC<ShoppingCarWidgetProps> = (props) => {
                                                 selectedData.filter(
                                                     (item) => item.checked
                                                 ),
-                                                total
+                                                `总价为：${total}`
                                             );
                                         }}
                                         radius={"full"}
