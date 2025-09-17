@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getLocale, getMessages } from "next-intl/server";
 import { Provider } from "@/app/providers";
@@ -16,8 +16,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "光厂创意",
-    description: "视频素材 , 光厂更专业",
+    title: "next-learning",
+    description: "一些有趣的东西",
     icons: {
         icon: "/next.svg",
     },

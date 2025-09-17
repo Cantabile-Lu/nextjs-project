@@ -1,4 +1,5 @@
 import ShoppingCarWidget from "./ShoppingCarWidget";
+import Button from "@/components/Button";
 
 const getData = () => {
     return fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/video`, {
@@ -9,6 +10,7 @@ const getData = () => {
 const Page = async () => {
     return (
         <div>
+            <Button />
             <ShoppingCarWidget promise={getData()} />
         </div>
     );

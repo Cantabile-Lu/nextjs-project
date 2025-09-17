@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "next dev --turbopack",
+    "build": "next build --turbopack",
     "start": "next start",
     "lint": "next lint"
   },
@@ -16,10 +16,10 @@
     "framer-motion": "^12.4.10",
     "js-cookie": "^3.0.5",
     "mockjs": "^1.1.0",
-    "next": "15.2.1",
+    "next": "15.5.3",
     "next-intl": "^3.26.5",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -33,7 +33,7 @@
     "@types/webpack-env": "^1.18.8",
     "autoprefixer": "^10.4.20",
     "eslint": "^9",
-    "eslint-config-next": "15.2.1",
+    "eslint-config-next": "15.5.3",
     "eslint-config-prettier": "^10.0.2",
     "postcss": "^8.5.3",
     "prettier": "^3.5.3",

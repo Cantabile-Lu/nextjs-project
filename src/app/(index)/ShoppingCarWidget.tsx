@@ -32,6 +32,7 @@ const DataTabs: FC<DataTabsProps> = (props) => {
     return (
         <Tabs
             aria-label="Options"
+            inert={true}
             classNames={{
                 tabList:
                     "gap-6   w-full relative  rounded-none p-0 border-b border-divider",

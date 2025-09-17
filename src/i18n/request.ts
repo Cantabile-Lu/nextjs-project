@@ -22,7 +22,7 @@ export const localesMap = {
 };
 export type LocaleKey = keyof typeof localesMap;
 export const locales = localeKeys.map((key) => localesMap[key as LocaleKey]);
-export const defaultLocale = "EN";
+export const defaultLocale = "en";
 export default getRequestConfig(async () => {
     const locale = await getLocale();
     return {
