@@ -8,12 +8,7 @@ const getData = () => {
 };
 
 const Page = async () => {
-    return (
-        <div>
-            <Button />
-            <ShoppingCarWidget promise={getData()} />
-        </div>
-    );
+    return <div></div>;
 };
 
 export default Page;

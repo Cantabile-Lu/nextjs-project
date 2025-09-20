@@ -31,14 +31,16 @@ const DataTabs: FC<DataTabsProps> = (props) => {
     };
     return (
         <Tabs
-            aria-label="Options"
+            key={"full"}
+            aria-label="Tabs radius"
+            radius={"full"}
             inert={true}
             classNames={{
                 tabList:
                     "gap-6   w-full relative  rounded-none p-0 border-b border-divider",
-                cursor: "w-full bg-[#000]",
+                cursor: "w-full bg-black",
                 tab: "max-w-fit px-0 h-12 ",
-                tabContent: "group-data-[selected=true]:text-[#000]",
+                tabContent: "group-data-[selected=true]:text-black",
             }}
             destroyInactiveTabPanel={false}
             color="primary"
