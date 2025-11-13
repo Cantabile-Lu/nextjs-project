@@ -8,7 +8,11 @@ const getData = () => {
 };
 
 const Page = async () => {
-    return <div></div>;
+    return (
+        <div>
+            <Button />
+        </div>
+    );
 };
 
 export default Page;

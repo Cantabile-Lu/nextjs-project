@@ -33,19 +33,13 @@ export default async function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
-    const local = await getLocale();
-
-    const messages = await getMessages();
-
     return (
-        <html lang={local}>
+        <html>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased purple-dark`}
             >
                 <Provider>
-                    <NextIntlClientProvider messages={messages}>
-                        {children}
-                    </NextIntlClientProvider>
+                    <NextIntlClientProvider>{children}</NextIntlClientProvider>
                 </Provider>
             </body>
         </html>
