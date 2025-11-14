@@ -8,7 +8,6 @@ class CustomStorage {
     constructor(type: StorageType) {
         this.type = type;
     }
-
     /**
      * 设置
      */
