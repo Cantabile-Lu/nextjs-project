@@ -9,10 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@ethereumjs/tx": "^10.1.0",
+    "@ethereumjs/wallet": "^10.0.0",
     "@heroui/react": "^2.8.5",
     "axios": "^1.8.2",
+    "bip39": "^3.1.0",
     "clsx": "^2.1.1",
     "dayjs": "^1.11.13",
+    "ethereumjs-util": "^7.1.5",
     "framer-motion": "^12.23.24",
     "js-cookie": "^3.0.5",
     "mockjs": "^1.1.0",
